@@ -8,11 +8,11 @@ get '/' do
 end
 
 get "/app_register" do
-  erb :regis_app
+  erb :regist_app
 end
 
 get "/com_register" do
-  erb :regis_com
+  erb :regist_com
 end
 
 post "/app_login" do
