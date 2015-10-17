@@ -2,6 +2,11 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require './config/environments'
 require './process'
+require './models/applicants'        #Model class
+require './models/companies'        #Model class
+require './models/projects'        #Model class
+require './models/receives'        #Model class
+require "pry-byebug"
 
 get '/' do
   erb :home
@@ -35,9 +40,9 @@ post "/submit_regis_app" do
   var = check_pwd(params[:regis])
   if var.nil?
     redirect "/app_register"
-  else:
-    @applicant = Applicant.new(var)
-    if @applicant.save
+  else
+    @company = Applicant.new(var)
+    if @company.save
       redirect '/'
     else
       "Something is Wrong"
@@ -49,7 +54,7 @@ post "/submit_regis_com" do
   var = check_pwd(params[:regis])
   if var.nil?
     redirect "/com_register"
-  else:
+  else
     @company = Company.new(var)
     if @company.save
       redirect '/'
@@ -59,11 +64,12 @@ post "/submit_regis_com" do
   end
 end
 
-def auth(user,pass,type):
+def auth(user,pass,type)
   if type == "user"
     u = Applicant.find_by(email: user)
-  else:
-    u = Company.find_by(email: user)    
+  else
+    u = Company.find_by(email: user)
+  end
   if u.nil?
     return false
   end
