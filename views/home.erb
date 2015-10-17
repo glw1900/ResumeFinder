@@ -1,7 +1,13 @@
 <h3>Welcome to ResumeFinder!</h3>
-<form action="/login" method="POST">
+<form action="/app_login" method="POST">
 	<input type="text" name="user[email]" value="Enter Your Email" />
-  <input type="text" name="user[date]" value="Enter Your Password" />
-	<input type="submit" value="Login" />
+  <input type="text" name="user[password]" value="Enter Your Password" />
+	<input type="submit" value="Applicant Login" />
 </form>
-<a href="/register"><input type="button" value="Sign up" ></input></a>
+<form action="/com_login" method="POST">
+	<input type="text" name="company[email]" value="Enter Your Email" />
+  <input type="text" name="company[password]" value="Enter Your Password" />
+	<input type="submit" value="Company Login" />
+</form>
+<a href="/app_register"><input type="button" value="Applicant Sign up" ></input></a>
+<a href="/com_register"><input type="button" value="Company Sign up" ></input></a>
