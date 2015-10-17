@@ -15,11 +15,11 @@ get "/com_register" do
 end
 
 post "/app_login" do
-  
+
 end
 
 post "/com_login" do
-  
+
 end
 
 post "/submit_regis_app" do
