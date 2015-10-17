@@ -1,4 +1,4 @@
 class Company < ActiveRecord::Base
-  has_many :recieves
-  has_many :applicants, :through => :recieves
+  has_many :receives
+  has_many :applicants, :through => :receives
 end
