@@ -32,20 +32,30 @@ post "/com_login" do
 end
 
 post "/submit_regis_app" do
-  @applicant = Applicant.new(params[:regis])
-  if @applicant.save
-    redirect '/'
-  else
-    "Something is Wrong"
+  var = check_pwd(params[:regis])
+  if var.nil?
+    redirect "/app_register"
+  else:
+    @company = Applicant.new(var)
+    if @company.save
+      redirect '/'
+    else
+      "Something is Wrong"
+    end
   end
 end
 
 post "/submit_regis_com" do
-  @company = Company.new(param[:regis])
-  if @company.save
-    redirect '/'
-  else
-    "Something is Wrong"
+  var = check_pwd(params[:regis])
+  if var.nil?
+    redirect "/com_register"
+  else:
+    @company = Company.new(var)
+    if @company.save
+      redirect '/'
+    else
+      "Something is Wrong"
+    end
   end
 end
 
