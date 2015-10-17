@@ -24,6 +24,7 @@ post "/app_login" do
 end
 
 post "/com_login" do
+
   @user = params[:user][:email]
   @pass = params[:user][:password]
   if auth(@user,@pass,"com")
