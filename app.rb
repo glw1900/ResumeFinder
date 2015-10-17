@@ -36,8 +36,8 @@ post "/submit_regis_app" do
   if var.nil?
     redirect "/app_register"
   else:
-    @company = Applicant.new(var)
-    if @company.save
+    @applicant = Applicant.new(var)
+    if @applicant.save
       redirect '/'
     else
       "Something is Wrong"
