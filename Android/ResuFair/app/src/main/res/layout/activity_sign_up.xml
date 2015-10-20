@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/welcome_regis"
-        android:id="@+id/projectNameText" />
+        android:id="@+id/regis_name" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -32,14 +32,14 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:hint="@string/username_hint"
-            android:id="@+id/userEmail" />
+            android:id="@+id/userEmail_regis" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/userPassword"
+            android:id="@+id/userPassword_regis"
             android:hint="@string/password_hint"
             android:layout_gravity="center_horizontal" />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/reUserPassword"
+            android:id="@+id/reUserPassword_regis"
             android:hint="@string/re_password"
             android:layout_gravity="center_horizontal" />
 
@@ -64,8 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/regis_button"
-            android:id="@+id/sign_in_button"
-            android:onClick="signIn" />
+            android:id="@+id/submit_button"
+            android:onClick="authenticate" />
 
     </LinearLayout>
 
