@@ -6,4 +6,7 @@
     <string name="sign_up_button">Not a member?</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_status">StatusActivity</string>
+    <string name="welcome_regis">Registration!</string>
+    <string name="re_password">Enter password again</string>
+    <string name="regis_button">Submit</string>
 </resources>
