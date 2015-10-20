@@ -6,7 +6,7 @@ require './models/applicants'        #Model class
 require './models/companies'        #Model class
 require './models/projects'        #Model class
 require './models/receives'        #Model class
-require "pry-byebug"
+# require "pry-byebug"
 
 get '/' do
   erb :home
@@ -24,7 +24,7 @@ post "/app_login" do
   @user = params[:user][:email]
   @pass = params[:user][:password]
   if auth(@user,@pass,"user")
-
+    session[]
   end
 end
 

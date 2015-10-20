@@ -10,7 +10,11 @@ def check_pwd (hsh)
   end
 end
 
+<<<<<<< HEAD:process.rb
 #
+=======
+
+>>>>>>> 0489dfb353801acf6fcda97a5d8d2afccd79e156:Server/process.rb
 # hsh = {"password"=>"abc","re_password"=>"abc","gpa"=>4.0}
 # h = check_pwd(hsh)
 # puts (hsh)
