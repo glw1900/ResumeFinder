@@ -11,7 +11,7 @@ def check_pwd (hsh)
 end
 
 
-hsh = {"password"=>"abc","re_password"=>"abc","gpa"=>4.0}
-h = check_pwd(hsh)
-puts (hsh)
-puts (h)
+# hsh = {"password"=>"abc","re_password"=>"abc","gpa"=>4.0}
+# h = check_pwd(hsh)
+# puts (hsh)
+# puts (h)
