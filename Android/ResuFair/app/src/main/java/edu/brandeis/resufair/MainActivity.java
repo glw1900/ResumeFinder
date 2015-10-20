@@ -2,6 +2,7 @@ package edu.brandeis.resufair;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initUserInputFields();
+    }
+
+    private void initUserInputFields() {
+        SharedPreferences pref = getPreferences(MODE_PRIVATE);
+        String storedUsername = pref.getString("username", "");
+        userType = pref.getString("userType", "");
+        EditText userEmail = (EditText) findViewById(R.id.user_email_text_view_main);
+
+        RadioButton button1 = (RadioButton) findViewById(R.id.radio_button1_main);
+        RadioButton button2 = (RadioButton) findViewById(R.id.radio_button2_main);
+        if (!storedUsername.equals("")) {
+            userEmail.setText(storedUsername);
+        }
+        if(!userType.equals("")) {
+            if (userType.equals(button1.getText().toString())) {
+                button1.setChecked(true);
+            } else {
+                button2.setChecked(true);
+            }
+        }
     }
 
     public void signIn(View view) {
@@ -32,16 +54,18 @@ public class MainActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(context, text, duration).show();
         } else {
-            Intent intent = new Intent(this, StatusActivity.class);
-            EditText userEmail = (EditText) findViewById(R.id.userEmail);
-            EditText userPassword = (EditText) findViewById(R.id.userPassword);
+
+            EditText userEmail = (EditText) findViewById(R.id.user_email_text_view_main);
+            EditText userPassword = (EditText) findViewById(R.id.password_text_view_main);
 
 
+            this.storeUserInfo(userEmail.getText().toString());
             // will be replaced by requesting server
             HashMap<String, String> map = generateTestUserInfo();
 
+            Intent intent = new Intent(this, StatusActivity.class);
             intent.putExtra(USER_INFO, map);
-            startActivity(intent);
+//            startActivity(intent);
         }
     }
 
@@ -65,7 +89,12 @@ public class MainActivity extends AppCompatActivity {
         return map;
     }
 
-    private void stortUserInfo(String name, String password) {
-        
+    private void storeUserInfo(String username) {
+
+        SharedPreferences settings = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("username", username);
+        editor.putString("userType", userType);
+        editor.apply();
     }
 }
