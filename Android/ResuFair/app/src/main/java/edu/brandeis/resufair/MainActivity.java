@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-        if (userType == null) {
+        if (userType.equals("")) {
             // display a toast message to remind the user to select a type
             Context context = getApplicationContext();
             String userType1 = getString(R.string.user_type_1);

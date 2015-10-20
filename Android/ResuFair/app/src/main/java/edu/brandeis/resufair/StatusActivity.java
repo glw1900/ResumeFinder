@@ -27,7 +27,7 @@ public class StatusActivity extends AppCompatActivity {
 
         // Get the message from the intent
         Intent intent = getIntent();
-        HashMap<String, String> hashMap = (HashMap<String, String>)intent.getSerializableExtra("map");
+        HashMap<String, String> hashMap = (HashMap<String, String>) intent.getSerializableExtra(MainActivity.USER_INFO);
         //   Log.v("HashMapTest", hashMap.get("key"));
 
         TextView name = (TextView) findViewById(R.id.status_name);
@@ -38,7 +38,7 @@ public class StatusActivity extends AppCompatActivity {
 
         name.setText(hashMap.get("name"));
         birthday.setText(hashMap.get("birthday"));
-        college.setText(hashMap.get("college"));
+        college.setText(hashMap.get("school"));
         major.setText(hashMap.get("major"));
         gpa.setText(hashMap.get("gpa"));
 //        String[] message = intent.getStringArrayExtra(MainActivity.USER_INFO);
