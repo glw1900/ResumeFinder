@@ -9,4 +9,6 @@
     <string name="welcome_regis">Registration!</string>
     <string name="re_password">Enter password again</string>
     <string name="regis_button">Submit</string>
+    <string name="user_type_1">JobSeeker</string>
+    <string name="user_type_2">Company</string>
 </resources>
