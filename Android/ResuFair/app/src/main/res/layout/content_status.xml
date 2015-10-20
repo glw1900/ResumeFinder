@@ -13,14 +13,59 @@
         android:textSize="40sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="aaaa"
-        android:id="@+id/status_username"/>
-
+        android:text="Name:"/>
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_name"/>
 
     <TextView
         android:textSize="40sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="aaaa"
-        android:id="@+id/status_password"/>
+        android:text="Birthday:"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_birthday"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="College:"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_college"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Major:"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_major"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GPA:"/>
+
+    <TextView
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_gpa"/>
 </LinearLayout>
+
