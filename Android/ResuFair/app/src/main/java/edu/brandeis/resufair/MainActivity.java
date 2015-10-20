@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, StatusActivity.class);
             intent.putExtra(USER_INFO, map);
-//            startActivity(intent);
+            startActivity(intent);
         }
     }
 
