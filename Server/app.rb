@@ -6,7 +6,8 @@ require './models/applicants'        #Model class
 require './models/companies'        #Model class
 require './models/projects'        #Model class
 require './models/receives'        #Model class
-# require "pry-byebug"
+require "pry-byebug"
+enable :sessions
 
 get '/' do
   erb :home
@@ -20,11 +21,25 @@ get "/com_register" do
   erb :regist_com
 end
 
+get "/person_page" do
+  @user = session["username"]
+  @p = Applicant.find_by(email: @user)
+  erb :person_page
+end
+
+get "/company_page" do
+  @user = session["username"]
+  erb :company_page
+end
+
 post "/app_login" do
   @user = params[:user][:email]
   @pass = params[:user][:password]
   if auth(@user,@pass,"user")
-    session[]
+    session["username"] = @user
+    redirect '/person_page'
+  else
+    "Email and Password not match"
   end
 end
 
@@ -32,7 +47,10 @@ post "/com_login" do
   @user = params[:user][:email]
   @pass = params[:user][:password]
   if auth(@user,@pass,"com")
-
+    session["username"] = @user
+    redirect '/company_page'
+  else
+    "Email and Password not match"
   end
 end
 
@@ -63,6 +81,7 @@ post "/submit_regis_com" do
     end
   end
 end
+
 
 def auth(user,pass,type)
   if type == "user"
