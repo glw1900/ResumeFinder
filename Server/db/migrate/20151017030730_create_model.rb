@@ -20,13 +20,16 @@ class CreateModel < ActiveRecord::Migration
       project.string :title
       project.date :start_date
       project.date :end_date
-      project.string :describe
+      project.string :description
     end
 
     create_table :educations do |education|
       education.integer :appl_id
-      education.string :title
-      education.string :describe
+      education.string :school
+      education.string :degree
+      education.string :major
+      education.float :gpa
+      education.string :description
       education.date :start_date
       education.date :end_date
     end
@@ -34,7 +37,7 @@ class CreateModel < ActiveRecord::Migration
     create_table :experiences do |experience|
       experience.integer :appl_id
       experience.string :title
-      experience.string :describe
+      experience.string :description
       experience.date :start_date
       experience.date :end_date
     end
