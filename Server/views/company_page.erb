@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HomePage</title>
+</head>
+<body>
+
+  <h2>Welcome <%= @c.name %></h2>
+  Company Name: <%= @c.name %><br>
+  Info: <%= @c.info %><br>
+  <br><br>
+  Request Applicant:
+  <form action="/request" method="POST">
+    <input type="text" name="request[appl_email]" value="Enter Applicant's Email">
+    <input type="submit" value="Request" />
+  </form>

@@ -16,7 +16,7 @@ class CreateModel < ActiveRecord::Migration
     end
 
     create_table :projects do |project|
-      project.integer :appl_id
+      project.string :appl_email
       project.string :title
       project.date :start_date
       project.date :end_date
@@ -24,7 +24,7 @@ class CreateModel < ActiveRecord::Migration
     end
 
     create_table :educations do |education|
-      education.integer :appl_id
+      education.string :appl_email
       education.string :school
       education.string :degree
       education.string :major
@@ -35,7 +35,7 @@ class CreateModel < ActiveRecord::Migration
     end
 
     create_table :experiences do |experience|
-      experience.integer :appl_id
+      experience.string :appl_email
       experience.string :title
       experience.string :description
       experience.date :start_date
@@ -43,8 +43,8 @@ class CreateModel < ActiveRecord::Migration
     end
 
     create_table :receives do |receive|
-      receive.integer :appl_id
-      receive.integer :comp_id
+      receive.string :appl_email
+      receive.string :comp_email
     end
   end
 

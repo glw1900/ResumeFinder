@@ -29,35 +29,35 @@ ActiveRecord::Schema.define(version: 20151017030730) do
   end
 
   create_table "educations", force: :cascade do |t|
-    t.integer "appl_id"
-    t.string  "school"
-    t.string  "degree"
-    t.string  "major"
-    t.float   "gpa"
-    t.string  "description"
-    t.date    "start_date"
-    t.date    "end_date"
+    t.string "appl_email"
+    t.string "school"
+    t.string "degree"
+    t.string "major"
+    t.float  "gpa"
+    t.string "description"
+    t.date   "start_date"
+    t.date   "end_date"
   end
 
   create_table "experiences", force: :cascade do |t|
-    t.integer "appl_id"
-    t.string  "title"
-    t.string  "description"
-    t.date    "start_date"
-    t.date    "end_date"
+    t.string "appl_email"
+    t.string "title"
+    t.string "description"
+    t.date   "start_date"
+    t.date   "end_date"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.integer "appl_id"
-    t.string  "title"
-    t.date    "start_date"
-    t.date    "end_date"
-    t.string  "description"
+    t.string "appl_email"
+    t.string "title"
+    t.date   "start_date"
+    t.date   "end_date"
+    t.string "description"
   end
 
   create_table "receives", force: :cascade do |t|
-    t.integer "appl_id"
-    t.integer "comp_id"
+    t.string "appl_email"
+    t.string "comp_email"
   end
 
 end
