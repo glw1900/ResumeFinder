@@ -2,10 +2,12 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require './config/environments'
 require './process'
-require './models/applicants'        #Model class
-require './models/companies'        #Model class
-require './models/projects'        #Model class
+require './models/applicant'        #Model class
+require './models/company'        #Model class
+require './models/project'        #Model class
 require './models/receives'        #Model class
+require './models/education'
+require './models/experience'
 require "pry-byebug"
 enable :sessions
 
