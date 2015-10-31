@@ -11,14 +11,59 @@ First Name: <%= @p.first_name %> <br>
 Last Name: <%= @p.last_name %> <br>
 Email: <%= @p.email %> <br>
 Summary: <%= @p.summary %> <br>
-
+<br><br><br>
 Project: <br>
+	<% if !@project.nil? %>
+
+	<% @project.each do |pro| %>
 	<ul style="list-style-type:none">
-	  <li>Coffee</li>
-	  <li>Tea</li>
-	  <li>Milk</li>
+	  <li>
+	  Title: <%= pro.title%>
+	  Summary: <%= pro.describe%>
+	  Start Date: <%= pro.start_date %>
+	  End Date: <%= pro.end_date %>
+	  </li>
+	  <br><br>
 	</ul>
-	
+	<% end %>
+<% end %>
+<br><br><br>
+Experience: <br>
+	<% if !@experience.nil? %>
+
+	<% @experience.each do |exp| %>
+	<ul style="list-style-type:none">
+	  <li>
+	  Title: <%= exp.title%>
+	  Summary: <%= exp.describe%>
+	  Start Date: <%= exp.start_date %>
+	  End Date: <%= exp.end_date %>
+	  </li>
+	  <br><br>
+	</ul>
+	<% end %>
+<% end %>
+<br><br><br>
+Education: <br>
+<% if !@education.nil? %>
+
+	<% @education.each do |edu| %>
+	<ul style="list-style-type:none">
+	  <li>
+	  School: <%= edu.school%>
+	  Degree: <%= edu.degree%>
+	  Start Date: <%= edu.start_date %>
+	  End Date: <%= edu.end_date %>
+	  Major: <%= edu.major %>
+	  GPA: <%= edu.gpa %>
+	  Summary: <%= edu.describe%>
+	  </li>
+	  <br><br>
+	</ul>
+	<% end %>
+<% end %>
+
+
 </body>
 </html>
 
