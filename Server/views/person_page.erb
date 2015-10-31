@@ -6,22 +6,22 @@
 <body>
 
 <h2>HomePage For <%= @p.first_name %></h2> 
-
 First Name: <%= @p.first_name %> <br>
 Last Name: <%= @p.last_name %> <br>
 Email: <%= @p.email %> <br>
 Summary: <%= @p.summary %> <br>
 <br><br><br>
 Project: <br>
+	
 	<% if !@project.nil? %>
 
 	<% @project.each do |pro| %>
 	<ul style="list-style-type:none">
 	  <li>
-	  Title: <%= pro.title%>
-	  Summary: <%= pro.describe%>
-	  Start Date: <%= pro.start_date %>
-	  End Date: <%= pro.end_date %>
+	  Title: <%= pro.title%> <br>
+	  Summary: <%= pro.description%> <br>
+	  Start Date: <%= pro.start_date %> <br>
+	  End Date: <%= pro.end_date %> <br>
 	  </li>
 	  <br><br>
 	</ul>
@@ -34,10 +34,10 @@ Experience: <br>
 	<% @experience.each do |exp| %>
 	<ul style="list-style-type:none">
 	  <li>
-	  Title: <%= exp.title%>
-	  Summary: <%= exp.describe%>
-	  Start Date: <%= exp.start_date %>
-	  End Date: <%= exp.end_date %>
+	  Title: <%= exp.title%> <br>
+	  Summary: <%= exp.description%> <br>
+	  Start Date: <%= exp.start_date %> <br>
+	  End Date: <%= exp.end_date %> <br>
 	  </li>
 	  <br><br>
 	</ul>
@@ -50,22 +50,17 @@ Education: <br>
 	<% @education.each do |edu| %>
 	<ul style="list-style-type:none">
 	  <li>
-	  School: <%= edu.school%>
-	  Degree: <%= edu.degree%>
-	  Start Date: <%= edu.start_date %>
-	  End Date: <%= edu.end_date %>
-	  Major: <%= edu.major %>
-	  GPA: <%= edu.gpa %>
-	  Summary: <%= edu.describe%>
+	  School: <%= edu.school%> <br>
+	  Degree: <%= edu.degree%> <br>
+	  Start Date: <%= edu.start_date %> <br>
+	  End Date: <%= edu.end_date %> <br>
+	  Major: <%= edu.major %> <br>
+	  GPA: <%= edu.gpa %> <br>
+	  Summary: <%= edu.description%> <br>
 	  </li>
 	  <br><br>
 	</ul>
 	<% end %>
 <% end %>
-
-
 </body>
 </html>
-
-
-
