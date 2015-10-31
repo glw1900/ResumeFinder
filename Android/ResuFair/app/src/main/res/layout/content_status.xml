@@ -1,71 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.brandeis.resufair.StatusActivity"
-    tools:showIn="@layout/activity_status"
-    android:orientation="vertical">
-
-    <TextView
-        android:textSize="40sp"
+    tools:showIn="@layout/activity_status">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name:"/>
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/status_name"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Birthday:"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name:"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/status_birthday"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_name"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="College:"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Birthday:"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/status_college"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_birthday"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Major:"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="College:"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/status_major"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_college"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="GPA:"/>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Major:"/>
 
-    <TextView
-        android:textSize="40sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/status_gpa"/>
-</LinearLayout>
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_major"/>
 
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GPA:"/>
+
+        <TextView
+            android:textSize="40sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_gpa"/>
+    </LinearLayout>
+</ScrollView>
