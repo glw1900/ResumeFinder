@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resume %></title>
+</head>
+<body>
+
+<h2>Resume of <%= @p.first_name %> <%= @p.last_name %></h2>
+First Name: <%= @p.first_name %> <br>
+Last Name: <%= @p.last_name %> <br>
+Email: <%= @p.email %> <br>
+Summary: <%= @p.summary %> <br>
+<br><br><br>
+Project: <br>
+
+	<% if !@project.nil? %>
+
+	<% @project.each do |pro| %>
+	<ul style="list-style-type:none">
+	  <li>
+	  Title: <%= pro.title%> <br>
+	  Summary: <%= pro.description%> <br>
+	  Start Date: <%= pro.start_date %> <br>
+	  End Date: <%= pro.end_date %> <br>
+	  </li>
+	  <br><br>
+	</ul>
+	<% end %>
+<% end %>
+<br><br><br>
+Experience: <br>
+	<% if !@experience.nil? %>
+
+	<% @experience.each do |exp| %>
+	<ul style="list-style-type:none">
+	  <li>
+	  Title: <%= exp.title%> <br>
+	  Summary: <%= exp.description%> <br>
+	  Start Date: <%= exp.start_date %> <br>
+	  End Date: <%= exp.end_date %> <br>
+	  </li>
+	  <br><br>
+	</ul>
+	<% end %>
+<% end %>
+<br><br><br>
+Education: <br>
+<% if !@education.nil? %>
+
+	<% @education.each do |edu| %>
+	<ul style="list-style-type:none">
+	  <li>
+	  School: <%= edu.school%> <br>
+	  Degree: <%= edu.degree%> <br>
+	  Start Date: <%= edu.start_date %> <br>
+	  End Date: <%= edu.end_date %> <br>
+	  Major: <%= edu.major %> <br>
+	  GPA: <%= edu.gpa %> <br>
+	  Summary: <%= edu.description%> <br>
+	  </li>
+	  <br><br>
+	</ul>
+	<% end %>
+<% end %>
+<br><br>
+
+<a href="/company_page">Back to Home</a>
+
+</body>
+</html>
