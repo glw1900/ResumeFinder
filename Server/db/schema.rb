@@ -30,8 +30,11 @@ ActiveRecord::Schema.define(version: 20151017030730) do
 
   create_table "educations", force: :cascade do |t|
     t.integer "appl_id"
-    t.string  "title"
-    t.string  "describe"
+    t.string  "school"
+    t.string  "degree"
+    t.string  "major"
+    t.float   "gpa"
+    t.string  "description"
     t.date    "start_date"
     t.date    "end_date"
   end
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20151017030730) do
   create_table "experiences", force: :cascade do |t|
     t.integer "appl_id"
     t.string  "title"
-    t.string  "describe"
+    t.string  "description"
     t.date    "start_date"
     t.date    "end_date"
   end
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20151017030730) do
     t.string  "title"
     t.date    "start_date"
     t.date    "end_date"
-    t.string  "describe"
+    t.string  "description"
   end
 
   create_table "receives", force: :cascade do |t|
