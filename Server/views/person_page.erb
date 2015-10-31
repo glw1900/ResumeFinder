@@ -12,7 +12,7 @@ Email: <%= @p.email %> <br>
 Summary: <%= @p.summary %> <br>
 <br><br><br>
 Project: <br>
-	
+	<a href="/update_project">Update Project</a>
 	<% if !@project.nil? %>
 
 	<% @project.each do |pro| %>
@@ -29,6 +29,8 @@ Project: <br>
 <% end %>
 <br><br><br>
 Experience: <br>
+	
+	<a href="/update_experience">Update Experience</a>
 	<% if !@experience.nil? %>
 
 	<% @experience.each do |exp| %>
@@ -45,6 +47,7 @@ Experience: <br>
 <% end %>
 <br><br><br>
 Education: <br>
+<a href="/update_education">Update Education</a>
 <% if !@education.nil? %>
 
 	<% @education.each do |edu| %>
