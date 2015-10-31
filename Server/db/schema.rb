@@ -18,9 +18,7 @@ ActiveRecord::Schema.define(version: 20151017030730) do
     t.string "password"
     t.string "first_name"
     t.string "last_name"
-    t.string "school"
-    t.string "degree"
-    t.float  "gpa"
+    t.string "summary"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -30,8 +28,27 @@ ActiveRecord::Schema.define(version: 20151017030730) do
     t.string "info"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.integer "appl_id"
+    t.string  "title"
+    t.string  "describe"
+    t.date    "start_date"
+    t.date    "end_date"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer "appl_id"
+    t.string  "title"
+    t.string  "describe"
+    t.date    "start_date"
+    t.date    "end_date"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.integer "appl_id"
+    t.string  "title"
+    t.date    "start_date"
+    t.date    "end_date"
     t.string  "describe"
   end
 
