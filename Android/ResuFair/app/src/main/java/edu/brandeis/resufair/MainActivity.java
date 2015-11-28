@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -15,13 +16,15 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     public final static String USER_INFO = "edu.brandeis.resufair.userinfo";
-
+    public final static String SERVER = "SERVER";
     private String userType;
+    private ServerAPI server;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUserInputFields();
+        server = new ServerAPI();
     }
 
     private void initUserInputFields() {
@@ -54,19 +57,27 @@ public class MainActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(context, text, duration).show();
         } else {
+            TextView emailView = (TextView) findViewById(R.id.user_email_text_view_main);
+            TextView passwordView = (TextView) findViewById(R.id.user_email_text_view_main);
+            String userEmail = emailView.getText().toString();
+            String userPassword = passwordView.getText().toString();
+            this.storeUserInfo(userEmail);
 
-            EditText userEmail = (EditText) findViewById(R.id.user_email_text_view_main);
-            EditText userPassword = (EditText) findViewById(R.id.password_text_view_main);
+            server.logIn(userEmail, userPassword, userType);
 
-
-            this.storeUserInfo(userEmail.getText().toString());
-            // will be replaced by requesting server
-            HashMap<String, String> map = generateTestUserInfo();
-
-            Intent intent = new Intent(this, StatusActivity.class);
-            intent.putExtra(USER_INFO, map);
-            startActivity(intent);
+            if (userType.equals(getString(R.string.user_type_1))) {
+                // will be replaced by requesting server
+                HashMap<String, String> map = generateTestUserInfo();
+                Intent intent = new Intent(this, StatusActivity.class);
+                intent.putExtra(USER_INFO, map);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, CompanyStatusActivity.class);
+                intent.putExtra(SERVER, server);
+                startActivity(intent);
+            }
         }
+
     }
 
     public void signUp(View view) {
