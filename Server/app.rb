@@ -143,7 +143,6 @@ post "/request" do
   end
 end
 
-
 def auth(user,pass,type)
   if type == "user"
     u = Applicant.find_by(email: user)
