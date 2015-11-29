@@ -9,6 +9,14 @@
   Company Name: <%= @c.name %><br>
   Info: <%= @c.info %><br>
   <br><br>
+	Requested Applicants:
+	<ul>
+	<% @appl_list.each do |appl| %>
+		<li>
+			<a href = '/appl/<%= appl.email %>'><h3><%= appl.first_name %> <%= appl.last_name %></h3></a>
+		</li>
+	<% end %>
+	</ul>
   Request Applicant:
   <form action="/request" method="POST">
     <input type="text" name="request[appl_email]" value="Enter Applicant's Email">

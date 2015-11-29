@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".SignUpActivity"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:layout_centerVertical="true">
+
+    <TextView
+        style="@style/SmallHeaderStyle"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/welcome_regis"
+        android:id="@+id/regis_name" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:hint="@string/username_hint"
+            android:id="@+id/userEmail_regis" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/userPassword_regis"
+            android:hint="@string/password_hint"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/reUserPassword_regis"
+            android:hint="@string/re_password"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regis_button"
+            android:id="@+id/submit_button"
+            android:onClick="authenticate" />
+
+    </LinearLayout>
+
+
+</LinearLayout><!-- From: file:/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/src/main/res/layout/activity_sign_up.xml -->
