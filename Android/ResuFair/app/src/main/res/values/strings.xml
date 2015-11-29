@@ -11,4 +11,6 @@
     <string name="regis_button">Submit</string>
     <string name="user_type_1">JobSeeker</string>
     <string name="user_type_2">Company</string>
+    <string name="company_option1">Add Candidate</string>
+    <string name="company_option2">Edit Profile</string>
 </resources>

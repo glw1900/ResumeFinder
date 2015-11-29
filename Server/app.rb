@@ -24,25 +24,67 @@ get "/com_register" do
 end
 
 get "/person_page" do
-  @user = session["username"]
-  @p = Applicant.find_by(email: @user)
-  id = @p.id
-  @project = Project.where(appl_id:id)
-  @experience = Experience.where(appl_id:id)
-  @education = Education.where(appl_id:id)
+  @email = session["email"]
+  @p = Applicant.find_by(email: @email)
+  @project = Project.where(appl_email:@p.email)
+  @experience = Experience.where(appl_email:@p.email)
+  @education = Education.where(appl_email:@p.email)
   erb :person_page
 end
 
 get "/company_page" do
-  @user = session["username"]
+  @email = session["email"]
+  @c = Company.find_by(email: @email)
   erb :company_page
 end
 
+get "/update_project" do
+  erb :update_project
+end
+
+get "/update_experience" do
+  erb :update_experience
+end
+
+get '/update_education' do
+  erb :update_education
+end
+
+post '/add_experience' do
+  params[:experience][:appl_email] = session["email"]
+  @experience = Experience.new(params[:experience])
+  if @experience.save
+    redirect "/person_page"
+  else
+    "Please Add Again"
+  end
+end
+
+post '/add_education' do
+  params[:education][:appl_email] = session["email"]
+  @education = Education.new(params[:education])
+  if @education.save
+    redirect "/person_page"
+  else
+    "Please Add Again"
+  end
+end
+
+post "/add_project" do
+  params[:project][:appl_email] = session["email"]
+  @project = Project.new(params[:project])
+  if @project.save
+    redirect "/person_page"
+  else
+    "Please Add Again"
+  end
+end
+
 post "/app_login" do
-  @user = params[:user][:email]
+  @email = params[:user][:email]
   @pass = params[:user][:password]
-  if auth(@user,@pass,"user")
-    session["username"] = @user
+  if auth(@email,@pass,"user")
+    session["email"] = @email
     redirect '/person_page'
   else
     "Email and Password not match"
@@ -50,10 +92,10 @@ post "/app_login" do
 end
 
 post "/com_login" do
-  @user = params[:user][:email]
-  @pass = params[:user][:password]
-  if auth(@user,@pass,"com")
-    session["username"] = @user
+  @email = params[:company][:email]
+  @pass = params[:company][:password]
+  if auth(@email,@pass,"com")
+    session["email"] = @email
     redirect '/company_page'
   else
     "Email and Password not match"
@@ -85,6 +127,19 @@ post "/submit_regis_com" do
     else
       "Something is Wrong"
     end
+  end
+end
+
+post "/request" do
+  receive = {}
+  receive[:appl_email] = params[:request][:appl_email]
+  receive[:comp_email] = session["username"]
+  @p = Applicant.find_by(email: params[:request][:appl_email])
+  @r = Receive.new(receive)
+  if @r.save
+    erb :appl_page
+  else
+    "Something is Wrong"
   end
 end
 
