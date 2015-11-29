@@ -35,6 +35,13 @@ end
 get "/company_page" do
   @email = session["email"]
   @c = Company.find_by(email: @email)
+  list = Receive.where(comp_email: @email)
+  @appl_list = []
+  list.each do |receive|
+    em = receive.appl_email
+    appl = Applicant.find_by(email: em)
+    @appl_list.push(appl)
+  end
   erb :company_page
 end
 
@@ -48,6 +55,12 @@ end
 
 get '/update_education' do
   erb :update_education
+end
+
+get '/appl/:appl_email' do
+  appl_email = params[:appl_email]
+  @p = Applicant.find_by(email: appl_email)
+  erb :appl_page
 end
 
 post '/add_experience' do
