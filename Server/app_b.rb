@@ -27,9 +27,9 @@ get "/person_page" do
   @user = session["username"]
   @p = Applicant.find_by(email: @user)
   id = @p.id
-  @project = Project.where(appl_id:id)
-  @experience = Experience.where(appl_id:id)
-  @education = Education.where(appl_id:id)
+  @project = Project.where(appl_email:id)
+  @experience = Experience.where(appl_email:id)
+  @education = Education.where(appl_email:id)
   erb :person_page
 end
 
