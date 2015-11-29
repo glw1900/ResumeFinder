@@ -33,7 +33,8 @@ get "/person_page" do
 end
 
 get "/company_page" do
-  @user = session["email"]
+  @email = session["email"]
+  @c = Company.find_by(email: @email)
   erb :company_page
 end
 
@@ -91,8 +92,8 @@ post "/app_login" do
 end
 
 post "/com_login" do
-  @email = params[:compnay][:email]
-  @pass = params[:compnay][:password]
+  @email = params[:company][:email]
+  @pass = params[:company][:password]
   if auth(@email,@pass,"com")
     session["email"] = @email
     redirect '/company_page'
@@ -126,6 +127,19 @@ post "/submit_regis_com" do
     else
       "Something is Wrong"
     end
+  end
+end
+
+post "/request" do
+  receive = {}
+  receive[:appl_email] = params[:request][:appl_email]
+  receive[:comp_email] = session["username"]
+  @p = Applicant.find_by(email: params[:request][:appl_email])
+  @r = Receive.new(receive)
+  if @r.save
+    erb :appl_page
+  else
+    "Something is Wrong"
   end
 end
 
