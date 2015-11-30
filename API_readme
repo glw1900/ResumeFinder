@@ -19,5 +19,5 @@ add a project to resume
 GET /api/add_experience/appl_email=123&title=TA&description=TA%20of%20android&start_date=09/10/2015&end_date=12/15/2015
 add an experience to resume
 
-GET /api/add_education/appl_email=123&school=Brandeis&degree=master&major=CS&gpa=4.0&description=aksjdahja&start_date=08-29-2014&end_date=12-15-2015
+GET /api/add_education/appl_email=123&school=Brandeis&degree=master&major=CS&GPA=4.0&description=aksjdahja&start_date=08/29/2014&end_date=12/15/2015
 add an education to resume

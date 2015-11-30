@@ -117,3 +117,61 @@ post "/request" do
     "Something is Wrong"
   end
 end
+
+post '/api/submit_regist_app/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  appl = Applicant.new(result)
+  appl.to_json
+end
+
+post '/api/submit_regist_comp/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  comp = Company.new(result)
+  comp.to_json
+end
+
+post '/api/request/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  request = Receive.new(result).as_json
+  appl = Applicant.find_by(email: result['appl_email']).as_json
+  r = {}
+  r['request'] = request
+  r['appl'] = appl
+  r.to_json
+end
+
+post '/api/add_project/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  pro = Project.new(result)
+  pro.to_json
+end
+
+post '/api/add_experience/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  exp = Experience.new(result)
+  exp.to_json
+end
+
+post '/api/add_education/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  edu = Education.new(result)
+  edu.to_json
+end

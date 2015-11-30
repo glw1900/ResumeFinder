@@ -38,6 +38,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.brandeis.resufair.MainActivity" />
         </activity>
+        <activity android:name="edu.brandeis.resufair.CompanyStatusActivity" >
+        </activity>
     </application>
 
 </manifest>

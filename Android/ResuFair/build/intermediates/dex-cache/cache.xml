@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
-        jar="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
-        <dex dex="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/classes-c7bfe18d5e0c830975f7a80f499b19951e56f8e5.jar" />
-    </item>
-    <item
-        jar="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
-        <dex dex="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-77350ff3f56266ef3fe0bb8451b58db03de6e154.jar" />
-    </item>
-    <item
-        jar="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
-        <dex dex="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/classes-f072a5c69d5bc2515c6bf3c194da1b187c37fc26.jar" />
-    </item>
-    <item
-        jar="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jar="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
         sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
-        <dex dex="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/classes-df3fbd369b0e98e594d31e45917ffe0609999a0e.jar" />
+        <dex dex="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/classes-c3f6ea25a2ec85c37f8cf41127e28ca817f64d9c.jar" />
     </item>
     <item
-        jar="/Users/guoliangwei/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jar="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/classes-2e211873e9d08f576fc625df315665be510f7c5d.jar" />
+    </item>
+    <item
+        jar="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
+        <dex dex="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/classes-dffee4d32a65aa9df73aa29a41c9888af1cf89ac.jar" />
+    </item>
+    <item
+        jar="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-be3a8bca43c39feb3aad87b30e2aa553cc5f2aa6.jar" />
+    </item>
+    <item
+        jar="/Users/EricLiu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
         jumboMode="false"
         revision="23.0.0"
         sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-5626e5396939c7af465956367ac87fd8d0dcfbd8.jar" />
+        <dex dex="/Users/EricLiu/Documents/Brandeis/Fall 2015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-a3a93016de23d4884293f81bdfd4b2c819224450.jar" />
     </item>
 
 </items>
