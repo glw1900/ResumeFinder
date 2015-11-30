@@ -18,8 +18,8 @@ class CreateModel < ActiveRecord::Migration
     create_table :projects do |project|
       project.string :appl_email
       project.string :title
-      project.date :start_date
-      project.date :end_date
+      project.string :start_date
+      project.string :end_date
       project.string :description
     end
 
@@ -30,16 +30,16 @@ class CreateModel < ActiveRecord::Migration
       education.string :major
       education.float :gpa
       education.string :description
-      education.date :start_date
-      education.date :end_date
+      education.string :start_date
+      education.string :end_date
     end
 
     create_table :experiences do |experience|
       experience.string :appl_email
       experience.string :title
       experience.string :description
-      experience.date :start_date
-      experience.date :end_date
+      experience.string :start_date
+      experience.string :end_date
     end
 
     create_table :receives do |receive|

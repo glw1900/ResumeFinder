@@ -9,6 +9,7 @@ require './models/receives'        #Model class
 require './models/education'
 require './models/experience'
 require "pry-byebug"
+require 'json'
 enable :sessions
 
 get '/' do
@@ -170,3 +171,115 @@ def auth(user,pass,type)
   end
   return false
 end
+
+#api
+get "/api/appl_login/:var" do
+  result = parse(params[:var])
+  @email = result["appl_email"]
+  @pass = result["password"]
+  if auth(@email,@pass,"user")
+    @p = Applicant.find_by(email: @email).as_json
+    @project = Project.where(appl_email:@p["email"]).as_json
+    @experience = Experience.where(appl_email:@p["email"]).as_json
+    @education = Education.where(appl_email:@p["email"]).as_json
+    hash = @p    
+    hash["project"] = @project
+    hash["experience"] = @experience
+    hash["education"] = @education
+    hash.to_json
+  else
+    halt 404
+  end
+end
+
+get "/api/comp_login/:var" do
+  result = parse(params[:var])
+  @email = result["comp_email"]
+  @pass = result["password"]
+  if auth(@email,@pass,"com")
+    @c = Company.find_by(email: @email).as_json
+    list = Receive.where(comp_email: @email).as_json
+    @appl_list = []
+    list.each do |receive|
+      appl = Applicant.find_by(email: receive["appl_email"]).as_json
+      @appl_list.push(appl)
+    end
+    hash = @c
+    hash["list"] = @appl_list
+    hash.to_json
+  else
+    halt 404
+  end
+end
+
+get '/api/submit_regist_app/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  appl = Applicant.new(result)
+  appl.to_json
+end
+
+get '/api/submit_regist_comp/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  comp = Company.new(result)
+  comp.to_json
+end
+
+get '/api/request/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  request = Receive.new(result).as_json
+  appl = Applicant.find_by(email: result['appl_email']).as_json
+  r = {}
+  r['request'] = request
+  r['appl'] = appl
+  r.to_json
+end
+
+get '/api/add_project/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  pro = Project.new(result)
+  pro.to_json
+end
+
+get '/api/add_experience/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  exp = Experience.new(result)
+  exp.to_json
+end
+
+get '/api/add_education/:var' do
+  if params[:var].nil?
+    halt 404
+  end
+  result = parse(params[:var])
+  edu = Education.new(result)
+  binding.pry
+  edu.to_json
+end
+
+def parse(var)
+  alist = var.split("&")
+  result = {}
+  for word in alist
+    word_m = word.strip
+    word_list = word_m.split('=')
+    result[word_list[0]] = word_list[1]
+  end
+  return result;
+end
+
+

@@ -1,24 +1,23 @@
-
-GET /api/appl_login/appl_email= '123' & password = '123'
+GET /api/appl_login/appl_email=123&password=123
 applicant login
 
-GET /api/comp_login/comp_email= '123' & password = '123'
+GET /api/comp_login/comp_email=123&password=123
 company login
 
-POST /api/submit_regist_app/email='123' & password='123' & re_password='123' & first_name='jishan' & last_name='li'
+GET /api/submit_regist_app/email=123&password=123&first_name=jishan&last_name=li
 applicant register
 
-POST /api/submit_regist_comp/email='123' & password='123' & re_password='123' & name='Brandy' & info='school'
+GET /api/submit_regist_comp/email=123&password=123&name=Brandy&info=school
 company register
 
-POST /api/request/appl_email='glw1900@123.com' & comp_email='123'
+GET /api/request/appl_email=glw1900@123.com&comp_email=123
 company request applicants' resume
 
-POST /api/add_project/title='android final' & description='android application' & start_date='10/10/2015' & end_date='12/03/2015'
+GET /api/add_project/appl_email=123&title=android%20final&description=android%20application&start_date=10/10/2015&end_date=12/03/2015
 add a project to resume
 
-POST /api/add_experience/title='TA' & description='TA of android' & start_date='09/10/2015' & end_date='12/15/2015'
+GET /api/add_experience/appl_email=123&title=TA&description=TA%20of%20android&start_date=09/10/2015&end_date=12/15/2015
 add an experience to resume
 
-POST /api/add_education/school='Brandeis' & degree='master' & major='CS' & GPA='4.0' & description='aksjdahja' & start_date='08/29/2014' & end_date='12/15/2015'
+GET /api/add_education/appl_email=123&school=Brandeis&degree=master&major=CS&gpa=4.0&description=aksjdahja&start_date=08-29-2014&end_date=12-15-2015
 add an education to resume

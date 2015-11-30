@@ -35,23 +35,23 @@ ActiveRecord::Schema.define(version: 20151017030730) do
     t.string "major"
     t.float  "gpa"
     t.string "description"
-    t.date   "start_date"
-    t.date   "end_date"
+    t.string "start_date"
+    t.string "end_date"
   end
 
   create_table "experiences", force: :cascade do |t|
     t.string "appl_email"
     t.string "title"
     t.string "description"
-    t.date   "start_date"
-    t.date   "end_date"
+    t.string "start_date"
+    t.string "end_date"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "appl_email"
     t.string "title"
-    t.date   "start_date"
-    t.date   "end_date"
+    t.string "start_date"
+    t.string "end_date"
     t.string "description"
   end
 
