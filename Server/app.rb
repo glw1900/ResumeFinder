@@ -10,6 +10,7 @@ require './models/education'
 require './models/experience'
 require "pry-byebug"
 require 'json'
+set :public_folder, File.dirname(__FILE__)+'/bootstrap-3.3.5-dist'
 enable :sessions
 
 get '/' do
@@ -106,8 +107,8 @@ post "/app_login" do
 end
 
 post "/com_login" do
-  @email = params[:company][:email]
-  @pass = params[:company][:password]
+  @email = params[:user][:email]
+  @pass = params[:user][:password]
   if auth(@email,@pass,"com")
     session["email"] = @email
     redirect '/company_page'
@@ -182,7 +183,7 @@ get "/api/appl_login/:var" do
     @project = Project.where(appl_email:@p["email"]).as_json
     @experience = Experience.where(appl_email:@p["email"]).as_json
     @education = Education.where(appl_email:@p["email"]).as_json
-    hash = @p    
+    hash = @p
     hash["project"] = @project
     hash["experience"] = @experience
     hash["education"] = @education
@@ -281,5 +282,3 @@ def parse(var)
   end
   return result;
 end
-
-
