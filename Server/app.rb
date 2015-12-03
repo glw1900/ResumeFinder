@@ -291,19 +291,19 @@ post '/api/edit_education' do
     education["description"],start_date:education["start_date"],end_date:education["end_date"])
 end
 
-post '/api/delete_project' do
-  project = params[:parameters]
-  Project.find_by(id:project["id"]).destroy
+get '/api/delete_project/:id' do
+  project = params[:id]
+  Project.find_by(id:project).destroy
 end
 
-post '/api/delete_experience' do
-  experience = params[:parameters]
-  Experience.find_by(id:experience["id"]).destroy
+get '/api/delete_experience/:id' do
+  experience = params[:id]
+  Experience.find_by(id:experience).destroy
 end
 
-post '/api/delete_education' do
-  education = params[:parameters]
-  Education.find_by(id:education["id"]).destroy
+get '/api/delete_education/:id' do
+  education = params[:id]
+  Education.find_by(id:education).destroy
 end
 
 def parse(var)
