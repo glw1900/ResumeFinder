@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/EricLiu/Documents/Brandeis/Fall%202015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values-nb/values-nb.xml -->
+    <!-- From: file:/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values-nb/values-nb.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Gå til startsiden"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s – %2$s"</string>

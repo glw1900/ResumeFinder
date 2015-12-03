@@ -24,4 +24,4 @@
         android:gravity="center_vertical|start"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
-<!-- From: file:/usr/local/google/buildbot/repo_clients/https___googleplex-android.googlesource.com_a_platform_manifest.git/mnc-release/frameworks/support/design/res/layout/design_navigation_item.xml --><!-- From: file:/Users/EricLiu/Documents/Brandeis/Fall%202015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/res/layout/design_navigation_item.xml -->
+<!-- From: file:/usr/local/google/buildbot/repo_clients/https___googleplex-android.googlesource.com_a_platform_manifest.git/mnc-release/frameworks/support/design/res/layout/design_navigation_item.xml --><!-- From: file:/Users/guoliangwei/CS/153aMobileApplicationDevelopment/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/res/layout/design_navigation_item.xml -->
