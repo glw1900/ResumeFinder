@@ -247,14 +247,14 @@ get '/api/request/:var' do
   comp = Company.find_by(email: result["comp_email"])
   old = Receive.find_by(appl_email: result['appl_email'], comp_email:result["comp_email"])
   if appl.nil? or comp.nil?
-    r['status'] = "failed"
+    r['status'] = "Request failed, please try again"
   elsif old.nil?
     request = Receive.new(result)
     request.save
-    r['status'] = "creation success"
+    r['status'] = "Creation success"
   else
     old.destroy
-    r['status'] = "deletion success"
+    r['status'] = "Deletion success"
   end
   r.to_json
 end
@@ -294,9 +294,9 @@ post '/api/edit_project' do
   old =  Project.find_by(id:project["id"])
   r = {}
   if old.nil?
-    r['status'] = "failed"
+    r['status'] = "Update failed"
   else
-    r['status'] = "success"
+    r['status'] = "Update success!"
     old.update(title:project["title"],start_date:project["start_date"],end_date:project["end_date"],description:project["description"])
   end
   r.to_json
@@ -307,9 +307,9 @@ post '/api/edit_experience' do
   old = Experience.find_by(id:experience["id"])
   r = {}
   if old.nil?
-    r['status'] = "failed"
+    r['status'] = "Update failed"
   else
-    r['status'] = "success"
+    r['status'] = "Update success!"
     old.update(title:experience["title"],start_date:experience["start_date"],end_date:experience["end_date"],description:experience["description"])
   end
   r.to_json
@@ -320,9 +320,9 @@ post '/api/edit_education' do
   old = Education.find_by(id:education["id"])
   r = {}
   if old.nil?
-    r['status'] = "failed"
+    r['status'] = "Update failed"
   else
-    r['status'] = "success"
+    r['status'] = "Update success!"
     old.update(school:education["school"],degree:education["degree"],major:education["major"],gpa:education["gpa"],description:
     education["description"],start_date:education["start_date"],end_date:education["end_date"])
   end
@@ -334,10 +334,10 @@ get '/api/delete_project/:id' do
   p = Project.find_by(id:project)
   r = {}
   if p.nil?
-    r['status'] = "failed"
+    r['status'] = "Deletion failed, please try again"
   else
     p.destroy
-    r['status'] = "success"
+    r['status'] = "Deletion Success!"
   end
   r.to_json
 end
@@ -347,10 +347,10 @@ get '/api/delete_experience/:id' do
   p = Experience.find_by(id:experience)
   r = {}
   if p.nil?
-    r['status'] = "failed"
+    r['status'] = "Deletion failed, please try again"
   else
     p.destroy
-    r['status'] = "success"
+    r['status'] = "Deletion Success!"
   end
   r.to_json
 end
@@ -360,10 +360,10 @@ get '/api/delete_education/:id' do
   p = Education.find_by(id:education)
   r = {}
   if p.nil?
-    r['status'] = "failed"
+    r['status'] = "Deletion failed, please try again"
   else
     p.destroy
-    r['status'] = "success"
+    r['status'] = "Deletion Success!"
   end
   r.to_json
 end

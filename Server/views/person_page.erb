@@ -77,6 +77,7 @@ Education: <br>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="/css/landing-page.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
@@ -86,9 +87,9 @@ Education: <br>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
-        <h2> Welcome <%= @p.first_name %> <%= @p.last_name %> </h2>
-        <h3>  Email: <%= @p.email %></h3>
-				<h3> <%= @p.summary %> </h3>
+        <h2 class="text-primary"> Welcome <%= @p.first_name %> <%= @p.last_name %> </h2>
+        <h3 class="text-primary">  Email: <%= @p.email %></h3>
+				<h3 class="text-primary"> <%= @p.summary %> </h3>
         <a href="/" class="btn btn-primary" role="button">Log Out</a>
 
       </div>
@@ -97,7 +98,7 @@ Education: <br>
         <ul class="list-group">
 					<div class="row">
 						<div class="col-xs-3">
-							<h2>Project</h2>
+							<h2 class="text-primary">Project</h2>
 						</div>
 						<div class="col-xs-9">
 							<a href="/update_project" class="btn btn-primary" role="button">Add Project</a>
@@ -122,7 +123,7 @@ Education: <br>
         <ul class="list-group">
 					<div class="row">
 						<div class="col-xs-3">
-							<h2>Experience</h2>
+							<h2 class="text-primary">Experience</h2>
 						</div>
 						<div class="col-xs-9">
 							<a href="/update_experience" class="btn btn-primary" role="button">Add Experience</a>
@@ -147,7 +148,7 @@ Education: <br>
         <ul class="list-group">
 					<div class="row">
 						<div class="col-xs-3">
-							<h2>Education</h2>
+							<h2 class="text-primary">Education</h2>
 						</div>
 						<div class="col-xs-9">
 							<a href="/update_education" class="btn btn-primary"  role="button">Add Education</a>
