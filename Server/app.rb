@@ -38,6 +38,7 @@ get "/company_page" do
   @email = session["email"]
   @c = Company.find_by(email: @email)
   list = Receive.where(comp_email: @email)
+
   @appl_list = []
   list.each do |receive|
     em = receive.appl_email
@@ -62,6 +63,9 @@ end
 get '/appl/:appl_email' do
   appl_email = params[:appl_email]
   @p = Applicant.find_by(email: appl_email)
+  @project = Project.where(appl_email:@p.email)
+  @experience = Experience.where(appl_email:@p.email)
+  @education = Education.where(appl_email:@p.email)
   erb :appl_page
 end
 
@@ -320,7 +324,7 @@ post '/api/edit_education' do
   else
     r['status'] = "success"
     old.update(school:education["school"],degree:education["degree"],major:education["major"],gpa:education["gpa"],description:
-    education["description"],start_date:education["start_date"],end_date:education["end_date"])  
+    education["description"],start_date:education["start_date"],end_date:education["end_date"])
   end
   r.to_json
 end
