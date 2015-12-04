@@ -219,6 +219,7 @@ get '/api/submit_regist_app/:var' do
   end
   result = parse(params[:var])
   appl = Applicant.new(result)
+  appl.save
   appl.to_json
 end
 
@@ -228,6 +229,7 @@ get '/api/submit_regist_comp/:var' do
   end
   result = parse(params[:var])
   comp = Company.new(result)
+  comp.save
   comp.to_json
 end
 
@@ -236,19 +238,19 @@ get '/api/request/:var' do
     halt 404
   end
   result = parse(params[:var])
-
+  r = {}
+  appl = Applicant.find_by(email: result['appl_email'])
+  comp = Company.find_by(email: result["comp_email"])
   old = Receive.find_by(appl_email: result['appl_email'], comp_email:result["comp_email"])
-  if old.nil?
-    request = Receive.new(result).as_json
+  if appl.nil? or comp.nil?
+    r['status'] = "failed"
+  elsif old.nil?
+    request = Receive.new(result)
+    request.save
+    r['status'] = "creation success"
   else
     old.destroy
-  end
-  appl = Applicant.find_by(email: result['appl_email'])
-  r = {}
-  if appl.nil?
-    r['status'] = "failed"
-  else
-    r['status'] = "success"
+    r['status'] = "deletion success"
   end
   r.to_json
 end
@@ -259,6 +261,7 @@ get '/api/add_project/:var' do
   end
   result = parse(params[:var])
   pro = Project.new(result)
+  pro.save
   pro.to_json
 end
 
@@ -268,6 +271,7 @@ get '/api/add_experience/:var' do
   end
   result = parse(params[:var])
   exp = Experience.new(result)
+  exp.save
   exp.to_json
 end
 
@@ -277,7 +281,7 @@ get '/api/add_education/:var' do
   end
   result = parse(params[:var])
   edu = Education.new(result)
-  binding.pry
+  edu.save
   edu.to_json
 end
 
