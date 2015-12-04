@@ -40,3 +40,8 @@ POST '/api/edit_experience/'
 POST '/api/edit_education/'
 
 
+POST ”/api/edit_basic/“
+
+get /api/comp_request_appl/appl_email=123&comp_email=321
+
+

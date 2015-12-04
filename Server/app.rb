@@ -217,6 +217,32 @@ get "/api/comp_login/:var" do
   end
 end
 
+get "/api/comp_request_appl/:var" do
+  result = parse(params[:var])
+  @comp_email = result["comp_email"]
+  @appl_email = result["appl_email"]
+  c = Company.find_by(email: @comp_email)
+  a = Applicant.find_by(email: @appl_email)
+  r = {}
+  if a.nil? or c.nil?
+    r['status'] = "failed"
+    r.to_json
+  else
+    r["status"] = "success"
+    @p = a.as_json
+    @project = Project.where(appl_email:@p["email"]).as_json
+    @experience = Experience.where(appl_email:@p["email"]).as_json
+    @education = Education.where(appl_email:@p["email"]).as_json
+    hash = @p
+    hash["project"] = @project
+    hash["experience"] = @experience
+    hash["education"] = @education
+    hash["status"] = "success"
+    hash.to_json
+  end    
+end
+
+
 get '/api/submit_regist_app/:var' do
   if params[:var].nil?
     halt 404
@@ -287,6 +313,20 @@ get '/api/add_education/:var' do
   edu = Education.new(result)
   edu.save
   edu.to_json
+end
+
+post "/api/edit_basic" do
+  basic = params[:parameters]
+  old = Applicant.find_by(id:basic["id"])
+  r={}
+  if old.nil?
+    r["status"] = "failed"
+  else
+    r["status"] = "success"
+    old.update(first_name:basic["first_name"],last_name:basic["last_name"],summary:basic["summary"],
+      email:basic["email"],password:basic["password"])
+  end
+  r.to_json  
 end
 
 post '/api/edit_project' do
