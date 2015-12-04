@@ -19,6 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,10 +66,10 @@ public class CompanyStatusActivity extends AppCompatActivity {
     }
 
     private void refreshCompanyInfo() {
-        server.getCompany(this, new AsyncResponse() {
+        server.getCompany(new Response.Listener<JSONObject>() {
             @Override
-            public void processFinish(JSONObject output) {
-                company = new Company(output);
+            public void onResponse(JSONObject response) {
+                company = new Company(response);
 
                 CandidateArrayAdapter temp = new CandidateArrayAdapter(CompanyStatusActivity.this, R.layout.candidate_listview_entry, company.getCandidates());
                 listview.setAdapter(temp);
@@ -76,6 +79,13 @@ public class CompanyStatusActivity extends AppCompatActivity {
                 nameView.setText(company.name);
                 contactView.setText(company.contact);
                 introView.setText(company.intro);
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(CompanyStatusActivity.this, "Something wrong, try again", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -94,18 +104,19 @@ public class CompanyStatusActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String candidateEmail = input.getText().toString();
-                server.addNewCandidate(CompanyStatusActivity.this, candidateEmail, new AsyncResponse() {
+                server.addNewCandidate(candidateEmail, new Response.Listener<JSONObject>() {
                     @Override
-                    public void processFinish(JSONObject output) {
+                    public void onResponse(JSONObject response) {
                         try {
-                            if (output != null && output.getString("status").equals("true")) {
-                                Toast.makeText(CompanyStatusActivity.this, "Add new Candidate succeed", Toast.LENGTH_SHORT).show();
-                            } else {
-                                throw new JSONException("a");
-                            }
+                            Toast.makeText(CompanyStatusActivity.this, response.getString("status"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
-                            Toast.makeText(CompanyStatusActivity.this, "Add new Candidate failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CompanyStatusActivity.this, "Transmission Error", Toast.LENGTH_SHORT).show();
                         }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(CompanyStatusActivity.this, "Response Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -119,6 +130,7 @@ public class CompanyStatusActivity extends AppCompatActivity {
         });
 
         builder.show();
+        this.refreshCompanyInfo();
     }
 
     private class CandidateArrayAdapter extends ArrayAdapter<Candidate> {

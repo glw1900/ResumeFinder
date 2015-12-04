@@ -11,6 +11,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             String userEmail = emailView.getText().toString();
             String userPassword = passwordView.getText().toString();
             this.storeUserInfo(userEmail);
-            server.logIn(this, userEmail, userPassword, userType);
+            server.logIn(userEmail, userPassword, userType);
             if (userType.equals(getString(R.string.user_type_1))) {
                 // will be replaced by requesting server
                 HashMap<String, String> map = generateTestUserInfo();
@@ -72,15 +75,18 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(USER_INFO, map);
                 startActivity(intent);
             } else {
-                server.getCompany(this, new AsyncResponse() {
+                server.getCompany(new Response.Listener<JSONObject>() {
                     @Override
-                    public void processFinish(JSONObject output) {
-                        if (output != null) {
-                            Intent intent = new Intent(MainActivity.this, CompanyStatusActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(MainActivity.this, "Login failed, try again", Toast.LENGTH_LONG).show();
-                        }
+                    public void onResponse(JSONObject response) {
+                        Intent intent = new Intent(MainActivity.this, CompanyStatusActivity.class);
+                        startActivity(intent);
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, "Login failed, try again", Toast.LENGTH_LONG).show();
+
                     }
                 });
             }
