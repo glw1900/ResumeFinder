@@ -9,7 +9,7 @@
   Company Name: <%= @c.name %><br>
   Info: <%= @c.info %><br>
   <br><br>
-	Requested Applicants:
+	Requested Applicants:<%= @appl_list.size %>
 	<ul>
 	<% @appl_list.each do |appl| %>
 		<li>
@@ -22,4 +22,3 @@
     <input type="text" name="request[appl_email]" value="Enter Applicant's Email">
     <input type="submit" value="Request" />
   </form>
-

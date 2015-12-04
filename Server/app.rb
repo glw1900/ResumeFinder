@@ -38,6 +38,7 @@ get "/company_page" do
   @email = session["email"]
   @c = Company.find_by(email: @email)
   list = Receive.where(comp_email: @email)
+
   @appl_list = []
   list.each do |receive|
     em = receive.appl_email
