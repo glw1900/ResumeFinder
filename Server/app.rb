@@ -149,7 +149,7 @@ end
 post "/request" do
   receive = {}
   receive[:appl_email] = params[:request][:appl_email]
-  receive[:comp_email] = session["username"]
+  receive[:comp_email] = session["email"]
   @p = Applicant.find_by(email: params[:request][:appl_email])
   @r = Receive.new(receive)
   if @r.save
@@ -237,11 +237,20 @@ get '/api/request/:var' do
     halt 404
   end
   result = parse(params[:var])
-  request = Receive.new(result).as_json
-  appl = Applicant.find_by(email: result['appl_email']).as_json
+
+  old = Receive.find_by(appl_email: result['appl_email'], comp_email:result["comp_email"])
+  if old.nil?
+    request = Receive.new(result).as_json
+  else
+    old.destroy
+  end
+  appl = Applicant.find_by(email: result['appl_email'])
   r = {}
-  r['request'] = request
-  r['appl'] = appl
+  if appl.nil?
+    r['status'] = "failed"
+  else
+    r['status'] = "success"
+  end
   r.to_json
 end
 
@@ -276,35 +285,80 @@ end
 post '/api/edit_project' do
   project = params[:parameters]
   old =  Project.find_by(id:project["id"])
-  old.update(title:project["title"],start_date:project["start_date"],end_date:project["end_date"],description:project["description"])
+  r = {}
+  if old.nil?
+    r['status'] = "failed"
+  else
+    r['status'] = "success"
+    old.update(title:project["title"],start_date:project["start_date"],end_date:project["end_date"],description:project["description"])
+  end
+  r.to_json
 end
 
 post '/api/edit_experience' do
   experience = params[:parameters]
   old = Experience.find_by(id:experience["id"])
-  old.update(title:experience["title"],start_date:experience["start_date"],end_date:experience["end_date"],description:experience["description"])
+  r = {}
+  if old.nil?
+    r['status'] = "failed"
+  else
+    r['status'] = "success"
+    old.update(title:experience["title"],start_date:experience["start_date"],end_date:experience["end_date"],description:experience["description"])
+  end
+  r.to_json
 end
 
 post '/api/edit_education' do
   education = params[:parameters]
   old = Education.find_by(id:education["id"])
-  old.update(school:education["school"],degree:education["degree"],major:education["major"],gpa:education["gpa"],description:
-    education["description"],start_date:education["start_date"],end_date:education["end_date"])
+  r = {}
+  if old.nil?
+    r['status'] = "failed"
+  else
+    r['status'] = "success"
+    old.update(school:education["school"],degree:education["degree"],major:education["major"],gpa:education["gpa"],description:
+    education["description"],start_date:education["start_date"],end_date:education["end_date"])  
+  end
+  r.to_json
 end
 
 get '/api/delete_project/:id' do
   project = params[:id]
-  Project.find_by(id:project).destroy
+  p = Project.find_by(id:project)
+  r = {}
+  if p.nil?
+    r['status'] = "failed"
+  else
+    p.destroy
+    r['status'] = "success"
+  end
+  r.to_json
 end
 
 get '/api/delete_experience/:id' do
   experience = params[:id]
-  Experience.find_by(id:experience).destroy
+  p = Experience.find_by(id:experience)
+  r = {}
+  if p.nil?
+    r['status'] = "failed"
+  else
+    p.destroy
+    r['status'] = "success"
+  end
+  r.to_json
 end
 
 get '/api/delete_education/:id' do
   education = params[:id]
-  Education.find_by(id:education).destroy
+  p = Education.find_by(id:education)
+  r = {}
+  if p.nil?
+    r['status'] = "failed"
+  else
+    p.destroy
+    r['status'] = "success"
+  end
+  r.to_json
 end
 
 def parse(var)
