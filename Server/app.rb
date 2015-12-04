@@ -272,6 +272,40 @@ get '/api/add_education/:var' do
   edu.to_json
 end
 
+post '/api/edit_project' do
+  project = params[:parameters]
+  old =  Project.find_by(id:project["id"])
+  old.update(title:project["title"],start_date:project["start_date"],end_date:project["end_date"],description:project["description"])
+end
+
+post '/api/edit_experience' do
+  experience = params[:parameters]
+  old = Experience.find_by(id:experience["id"])
+  old.update(title:experience["title"],start_date:experience["start_date"],end_date:experience["end_date"],description:experience["description"])
+end
+
+post '/api/edit_education' do
+  education = params[:parameters]
+  old = Education.find_by(id:education["id"])
+  old.update(school:education["school"],degree:education["degree"],major:education["major"],gpa:education["gpa"],description:
+    education["description"],start_date:education["start_date"],end_date:education["end_date"])
+end
+
+get '/api/delete_project/:id' do
+  project = params[:id]
+  Project.find_by(id:project).destroy
+end
+
+get '/api/delete_experience/:id' do
+  experience = params[:id]
+  Experience.find_by(id:experience).destroy
+end
+
+get '/api/delete_education/:id' do
+  education = params[:id]
+  Education.find_by(id:education).destroy
+end
+
 def parse(var)
   alist = var.split("&")
   result = {}

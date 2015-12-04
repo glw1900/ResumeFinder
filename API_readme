@@ -21,3 +21,22 @@ add an experience to resume
 
 GET /api/add_education/appl_email=123&school=Brandeis&degree=master&major=CS&GPA=4.0&description=aksjdahja&start_date=08/29/2014&end_date=12/15/2015
 add an education to resume
+
+GET ’/api/delete_project/'
+
+
+GET '/api/delete_experience/'
+
+
+GET '/api/delete_education/'
+
+
+POST ’/api/edit_project/'
+
+
+POST '/api/edit_experience/'
+
+
+POST '/api/edit_education/'
+
+
