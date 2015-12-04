@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>HomePage For <%= @p.first_name %></title>
 </head>
 <body>
 
-<h2>HomePage For <%= @p.first_name %></h2> 
+<h2>HomePage For <%= @p.first_name %></h2>
 First Name: <%= @p.first_name %> <br>
 Last Name: <%= @p.last_name %> <br>
 Email: <%= @p.email %> <br>
@@ -29,7 +29,7 @@ Project: <br>
 <% end %>
 <br><br><br>
 Experience: <br>
-	
+
 	<a href="/update_experience">Update Experience</a>
 	<% if !@experience.nil? %>
 
@@ -65,5 +65,119 @@ Education: <br>
 	</ul>
 	<% end %>
 <% end %>
+</body>
+</html> -->
+
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HomePage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<br><br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <h2>  <%= @p.first_name %> <%= @p.last_name %> </h2>
+        <h3>  Email: <%= @p.email %></h3>
+				<h3> <%= @p.summary %> </h3>
+        <a href="/" class="btn btn-primary" role="button">Log Out</a>
+
+      </div>
+      <div class="col-sm-9">
+
+        <ul class="list-group">
+					<div class="row">
+						<div class="col-xs-3">
+							<h2>Project</h2>
+						</div>
+						<div class="col-xs-9">
+							<a href="/update_project" class="btn btn-primary" role="button">Add Project</a>
+						</div>
+					</div>
+					<% if !@project.nil? %>
+						<% @project.each do |pro| %>
+	          	<li class="list-group-item">
+								<h3><strong>Title</strong></h3>
+								<h3><small><%= pro.title%></small></h3>
+								<h3><strong>Summary</strong></h3>
+								<h3><small><%= pro.description%></small></h3>
+								<h3><strong>Start Date</strong></h3>
+								<h3><small><%= pro.start_date%></small></h3>
+								<h3><strong>End Date</strong></h3>
+								<h3><small><%= pro.end_date%></small></h3>
+						<% end %>
+					<%else%>
+						<p>Add some projects!</p>
+					<% end %>
+        </ul>
+        <ul class="list-group">
+					<div class="row">
+						<div class="col-xs-3">
+							<h2>Experience</h2>
+						</div>
+						<div class="col-xs-9">
+							<a href="/update_experience" class="btn btn-primary" role="button">Add Experience</a>
+						</div>
+					</div>
+					<% if !@experience.nil? %>
+						<% @experience.each do |exp| %>
+	          	<li class="list-group-item">
+								<h3><strong>Title</strong></h3>
+								<h3><small><%= exp.title%></small></h3>
+								<h3><strong>Summary</strong></h3>
+								<h3><small><%= exp.description%></small></h3>
+								<h3><strong>Start Date</strong></h3>
+								<h3><small><%= exp.start_date%></small></h3>
+								<h3><strong>End Date</strong></h3>
+								<h3><small><%= exp.end_date%></small></h3>
+						<% end %>
+					<%else%>
+						<p>Add some experiences!</p>
+					<% end %>
+        </ul>
+        <ul class="list-group">
+					<div class="row">
+						<div class="col-xs-3">
+							<h2>Education</h2>
+						</div>
+						<div class="col-xs-9">
+							<a href="/update_education" class="btn btn-primary"  role="button">Add Education</a>
+						</div>
+					</div>
+					<% if !@education.nil? %>
+						<% @education.each do |edu| %>
+	          	<li class="list-group-item">
+								<h3><strong>School</strong></h3>
+								<h3><small><%= edu.school%></small></h3>
+								<h3><strong>Degree</strong></h3>
+								<h3><small><%= edu.degree%></small></h3>
+								<h3><strong>Start Date</strong></h3>
+								<h3><small><%= edu.start_date%></small></h3>
+								<h3><strong>End Date</strong></h3>
+								<h3><small><%= edu.end_date%></small></h3>
+								<h3><strong>Major</strong></h3>
+								<h3><small><%= edu.major%></small></h3>
+								<h3><strong>GPA</strong></h3>
+								<h3><small><%= edu.gpa%></small></h3>
+								<h3><strong>Summary</strong></h3>
+								<h3><small><%= edu.description%></small></h3>
+						<% end %>
+					<%else%>
+						<p>Add some experiences!</p>
+					<% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
