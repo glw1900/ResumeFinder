@@ -295,8 +295,12 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <!-- From: file:/Users/EricLiu/Documents/Brandeis/Fall%202015/AndroidProject/ResumeFinder/Android/ResuFair/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="candidate_signup_hint1">Last Name</string>
+    <string name="candidate_signup_hint2">First Name</string>
     <string name="company_option1">Add Candidate</string>
     <string name="company_option2">Edit Profile</string>
+    <string name="company_signup_hint1">Company Name</string>
+    <string name="company_signup_hint2">Information</string>
     <string name="password_hint">Password</string>
     <string name="re_password">Enter password again</string>
     <string name="regis_button">Submit</string>
@@ -312,7 +316,7 @@
     <string name="user_type_1">JobSeeker</string>
     <string name="user_type_2">Company</string>
     <string name="username_hint">Username</string>
-    <string name="welcome_regis">Registration!</string>
+    <string name="welcome_regis">Registration</string>
     <!-- From: file:/Users/EricLiu/Documents/Brandeis/Fall%202015/AndroidProject/ResumeFinder/Android/ResuFair/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

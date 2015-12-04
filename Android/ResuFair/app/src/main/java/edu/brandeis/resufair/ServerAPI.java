@@ -54,6 +54,20 @@ public class ServerAPI {
         String url = "http://resumefinder.herokuapp.com/api/request/appl_email=" + candidateEmail + "&comp_email=" + userEmail;
         requestSingleton.newRequest(url, listener, errorListener);
     }
+
+    public void deleteCandidate(String candidateEmail, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String url = "http://resumefinder.herokuapp.com/api/request/appl_email=" + candidateEmail + "&comp_email=" + userEmail;
+        requestSingleton.newRequest(url, listener, errorListener);
+    }
+
+    public void registerCandidate(String email, String password, String lastnName, String firstName, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String url = "http://resumefinder.herokuapp.com/api/submit_regist_app/email="+email+"&password="+password+"&first_name="+firstName+"&last_name="+lastnName;
+        requestSingleton.newRequest(url, listener, errorListener);
+    }
+    public void registerCompany(String email, String password, String companyName, String info, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String url = "http://resumefinder.herokuapp.com/api/submit_regist_comp/email="+email+"&password="+password+"&name="+companyName+"&info="+info;
+        requestSingleton.newRequest(url, listener, errorListener);
+    }
 }
 
 

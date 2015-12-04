@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -41,6 +42,16 @@ public class CompanyStatusActivity extends AppCompatActivity {
 
         this.listview = (ListView) findViewById(R.id.company_status_list_view);
         refreshCompanyInfo();
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                removeItemFromList(position);
+                return true;
+            }
+
+        });
     }
 
     @Override
@@ -109,6 +120,7 @@ public class CompanyStatusActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             Toast.makeText(CompanyStatusActivity.this, response.getString("status"), Toast.LENGTH_SHORT).show();
+                            CompanyStatusActivity.this.refreshCompanyInfo();
                         } catch (JSONException e) {
                             Toast.makeText(CompanyStatusActivity.this, "Transmission Error", Toast.LENGTH_SHORT).show();
                         }
@@ -130,7 +142,47 @@ public class CompanyStatusActivity extends AppCompatActivity {
         });
 
         builder.show();
-        this.refreshCompanyInfo();
+
+    }
+    protected void removeItemFromList(final int position) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                CompanyStatusActivity.this);
+
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want remove this candidate?");
+        alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // main code on after clicking yes
+                Candidate candidate = (Candidate) listview.getAdapter().getItem(position);
+                server.deleteCandidate(candidate.birthday, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Toast.makeText(CompanyStatusActivity.this, response.getString("status"), Toast.LENGTH_SHORT).show();
+                            CompanyStatusActivity.this.refreshCompanyInfo();
+                        } catch (JSONException e) {
+                            Toast.makeText(CompanyStatusActivity.this, "Transmission Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(CompanyStatusActivity.this, "Response Error", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }
+        });
+        alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
+
     }
 
     private class CandidateArrayAdapter extends ArrayAdapter<Candidate> {
