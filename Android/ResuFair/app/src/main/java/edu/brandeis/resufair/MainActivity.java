@@ -3,13 +3,15 @@ package edu.brandeis.resufair;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUserInputFields();
-        server = new ServerAPI();
+        server = ServerAPI.getInstance(this);
     }
 
     private void initUserInputFields() {
@@ -58,13 +60,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(context, text, duration).show();
         } else {
             TextView emailView = (TextView) findViewById(R.id.user_email_text_view_main);
-            TextView passwordView = (TextView) findViewById(R.id.user_email_text_view_main);
+            TextView passwordView = (TextView) findViewById(R.id.password_text_view_main);
             String userEmail = emailView.getText().toString();
             String userPassword = passwordView.getText().toString();
             this.storeUserInfo(userEmail);
-
-            server.logIn(userEmail, userPassword, userType);
-
+            server.logIn(this, userEmail, userPassword, userType);
             if (userType.equals(getString(R.string.user_type_1))) {
                 // will be replaced by requesting server
                 HashMap<String, String> map = generateTestUserInfo();
@@ -72,10 +72,19 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(USER_INFO, map);
                 startActivity(intent);
             } else {
-                Intent intent = new Intent(this, CompanyStatusActivity.class);
-                intent.putExtra(SERVER, server);
-                startActivity(intent);
+                server.getCompany(this, new AsyncResponse() {
+                    @Override
+                    public void processFinish(JSONObject output) {
+                        if (output != null) {
+                            Intent intent = new Intent(MainActivity.this, CompanyStatusActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Login failed, try again", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
+
         }
 
     }

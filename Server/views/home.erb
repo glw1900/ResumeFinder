@@ -1,13 +1,45 @@
-<h3>Welcome to ResumeFinder!</h3>
-<form action="/app_login" method="POST">
-	<input type="text" name="user[email]" value="Enter Your Email" />
-  <input type="text" name="user[password]" value="Enter Your Password" />
-	<input type="submit" value="Applicant Login" />
-</form>
-<form action="/com_login" method="POST">
-	<input type="text" name="company[email]" value="Enter Your Email" />
-  <input type="text" name="company[password]" value="Enter Your Password" />
-	<input type="submit" value="Company Login" />
-</form>
-<a href="/app_register"><input type="button" value="Applicant Sign up" ></input></a>
-<a href="/com_register"><input type="button" value="Company Sign up" ></input></a>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HomePage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h1 class="text-center">Welcome to ResumeFinder</h1>
+        </div>
+        <div class="modal-body">
+            <form class="form col-md-12 center-block" action="/com_login" method="POST">
+              <div class="form-group">
+                <input type="text" class="form-control input-lg" name= "user[email]"placeholder="User Email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Password" name="user[password]">
+              </div>
+
+							<div class="row">
+								<div class="col-xs-12 col-md-6"><input type="submit" value="Company Sign In" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+								<div class="col-xs-12 col-md-6"><button type="submit" formaction="/app_login" class="btn btn-primary btn-lg btn-block">Applicant Sign In</button></div>
+							</div>
+							<span class="pull-right"><a href="/app_register"><h4>Applicant Register</h4></a></span><span><a href="/com_register"><h4>Company Register</h4></a></span>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="col-md-12">
+            <a href="/" class="btn btn-default" data-dismiss="modal" aria-hidden="true" role="button">Cancel</a>
+  		  </div>
+        </div>
+    </div>
+    </div>
+  </div>
+
+</body>
+</html>

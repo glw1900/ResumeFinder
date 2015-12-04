@@ -1,13 +1,11 @@
 package edu.brandeis.resufair;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,30 +13,31 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CompanyStatusActivity extends AppCompatActivity {
 
     private ServerAPI server;
-    private CandidateArrayAdapter adapter;
+    private Company company;
+    private ListView listview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_status);
-        server = (ServerAPI) getIntent().getSerializableExtra(MainActivity.SERVER);
+        server = ServerAPI.getInstance(this);
+
+
+        this.listview = (ListView) findViewById(R.id.company_status_list_view);
         refreshCompanyInfo();
-
-        ListView listview = (ListView) findViewById(R.id.company_status_list_view);
-
-        this.adapter = new CandidateArrayAdapter(this, R.layout.candidate_listview_entry, server.getCandidates());
-        listview.setAdapter(adapter);
     }
 
     @Override
@@ -64,13 +63,22 @@ public class CompanyStatusActivity extends AppCompatActivity {
     }
 
     private void refreshCompanyInfo() {
-        TextView nameView = (TextView) findViewById(R.id.company_name_status);
-        TextView contactView = (TextView) findViewById(R.id.company_address_status);
-        TextView introView = (TextView) findViewById(R.id.company_intro_status);
-        Company company = server.getCompanyInfo();
-        nameView.setText(company.name);
-        contactView.setText(company.contact);
-        introView.setText(company.intro);
+        server.getCompany(this, new AsyncResponse() {
+            @Override
+            public void processFinish(JSONObject output) {
+                company = new Company(output);
+
+                CandidateArrayAdapter temp = new CandidateArrayAdapter(CompanyStatusActivity.this, R.layout.candidate_listview_entry, company.getCandidates());
+                listview.setAdapter(temp);
+                TextView nameView = (TextView) findViewById(R.id.company_name_status);
+                TextView contactView = (TextView) findViewById(R.id.company_address_status);
+                TextView introView = (TextView) findViewById(R.id.company_intro_status);
+                nameView.setText(company.name);
+                contactView.setText(company.contact);
+                introView.setText(company.intro);
+            }
+        });
+
     }
     private void AddNewCandidate() {
 
@@ -86,7 +94,21 @@ public class CompanyStatusActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String candidateEmail = input.getText().toString();
-                server.addNewCandidate(candidateEmail);
+                server.addNewCandidate(CompanyStatusActivity.this, candidateEmail, new AsyncResponse() {
+                    @Override
+                    public void processFinish(JSONObject output) {
+                        try {
+                            if (output != null && output.getString("status").equals("true")) {
+                                Toast.makeText(CompanyStatusActivity.this, "Add new Candidate succeed", Toast.LENGTH_SHORT).show();
+                            } else {
+                                throw new JSONException("a");
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(CompanyStatusActivity.this, "Add new Candidate failed", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
