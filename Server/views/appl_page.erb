@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Resume ></title>
@@ -65,6 +65,99 @@ Education: <br>
 <br><br>
 
 <a href="/company_page">Back to Home</a>
+
+</body>
+</html> -->
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<br><br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <h2><%= @p.first_name %> <%= @p.last_name %>'s Resume </h2>
+        <h3>  Email: <%= @p.email %></h3>
+				<h3> <%= @p.summary %> </h3>
+				<a href="/company_page" class="btn btn-primary" role="button">back to home</a>
+      </div>
+      <div class="col-sm-8">
+
+        <ul class="list-group">
+					<div class="row">
+							<h2>Project</h2>
+					</div>
+					<% if !@project.nil? %>
+						<% @project.each do |pro| %>
+	          	<li class="list-group-item">
+								<h3><strong>Title</strong></h3>
+								<h3><small><%= pro.title%></small></h3>
+								<h3><strong>Summary</strong></h3>
+								<h3><small><%= pro.description%></small></h3>
+								<h3><strong>Start Date</strong></h3>
+								<h3><small><%= pro.start_date%></small></h3>
+								<h3><strong>End Date</strong></h3>
+								<h3><small><%= pro.end_date%></small></h3>
+						<% end %>
+					<% end %>
+        </ul>
+        <ul class="list-group">
+					<div class="row">
+
+							<h2>Experience</h2>
+
+					</div>
+					<% if !@experience.nil? %>
+						<% @experience.each do |exp| %>
+	          	<li class="list-group-item">
+								<h3><strong>Title</strong></h3>
+								<h3><small><%= exp.title%></small></h3>
+								<h3><strong>Summary</strong></h3>
+								<h3><small><%= exp.description%></small></h3>
+								<h3><strong>Start Date</strong></h3>
+								<h3><small><%= exp.start_date%></small></h3>
+								<h3><strong>End Date</strong></h3>
+								<h3><small><%= exp.end_date%></small></h3>
+						<% end %>
+					<% end %>
+        </ul>
+        <ul class="list-group">
+					<div class="row">
+							<h2>Education</h2>
+					</div>
+					<% if !@education.nil? %>
+						<% @education.each do |edu| %>
+	          	<li class="list-group-item">
+								<h3><strong>School</strong></h3>
+								<h3><small><%= edu.school%></small></h3>
+								<h3><strong>Degree</strong></h3>
+								<h3><small><%= edu.degree%></small></h3>
+								<h3><strong>Start Date</strong></h3>
+								<h3><small><%= edu.start_date%></small></h3>
+								<h3><strong>End Date</strong></h3>
+								<h3><small><%= edu.end_date%></small></h3>
+								<h3><strong>Major</strong></h3>
+								<h3><small><%= edu.major%></small></h3>
+								<h3><strong>GPA</strong></h3>
+								<h3><small><%= edu.gpa%></small></h3>
+								<h3><strong>Summary</strong></h3>
+								<h3><small><%= edu.description%></small></h3>
+						<% end %>
+					<% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
