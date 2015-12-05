@@ -156,7 +156,7 @@ post "/request" do
   @p = Applicant.find_by(email: params[:request][:appl_email])
   @r = Receive.new(receive)
   if @r.save
-    erb :appl_page
+    redirect '/appl/' + receive[:appl_email]
   else
     "Something is Wrong"
   end
